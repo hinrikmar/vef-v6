@@ -25,20 +25,10 @@ export default function Form(props) {
   }
 
   return (
-    <form className={css.form_container} onSubmit={onSubmit}>
-      <div className={css.input_container}>
-        <p className = {css.input_title}>
-          Titill:
-        </p>
-        <input type="text" name="inputText" class ={css.input_text} value=""/>
-      </div>
-
-      <div className={css.input_container}>
-      <p className = {css.input_title}>
-          Klárast fyrir:
-        </p>
-        <input type="text" name="inputText" class ={css.input_text} value=""/>
-      </div>
+    <form className={css.form} onSubmit={onSubmit}>
+     
+      <Field label = "Titill: " />     
+      <Field label = "Klárast fyrir" />
     </form>
   )
 }
