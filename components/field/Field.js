@@ -7,7 +7,11 @@ export default function Field(props) {
   return (
     <div className = {css.field}>
       <p className = {css.field__label}> {label} </p>
-      <input type="text" name="inputText" className ={css.field__input} value=""/>
+      <input  type="text" 
+              name="inputText" 
+              className ={css.field__input} 
+              value=""
+              placeholder= "dd/mm/yyyy, --:-- " />
     </div>
   );
 }

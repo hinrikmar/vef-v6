@@ -27,8 +27,10 @@ export default function Form(props) {
   return (
     <form className={css.form} onSubmit={onSubmit}>
      
-      <Field label = "Titill: " />     
-      <Field label = "Klárast fyrir" />
+      <Field label = "Titill: "
+             before = "false"/>     
+      <Field label = "Klárast fyrir" 
+             before = "true"/>
     </form>
   )
 }

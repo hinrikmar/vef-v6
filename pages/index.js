@@ -33,10 +33,8 @@ function Home(props) {
         onFetchNewData={onFetchNewData}
       />
       
-     <h3> Nýtt verkefni </h3>
-     <Form
-       asdf
-       />
+     <Layout title="Nýtt verkefni"/>
+     <Form/>
       <Button>
           Búa til
       </Button>
