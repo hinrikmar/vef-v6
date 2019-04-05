@@ -1,26 +1,80 @@
 /* todo isomorphic-fetch og útfæra köll í vefþjónustu með slóð úr config */
 import 'isomorphic-fetch';
 import getConfig from 'next/config';
+import { isNull } from 'util';
 const { publicRuntimeConfig } = getConfig();
 const { apiUrl } = publicRuntimeConfig;
 
 export async function deleteTodo(id) {
-  console.log("virkar");
+  const url = new URL('/'+id,apiUrl);
+  console.log('fetch', url.href);
+  const response = await fetch(url.href, {method: 'DELETE'})
+  if (!response.ok) {
+    return null;
+  }
+
+  return response.json();
 }
+
 
 export async function addTodo(title, due) {
+
+  const url = new URL(apiUrl);
+ 
+  var myHeaders = new Headers();
+  myHeaders.append('Content-Type', 'application/json');
   
+  
+    const response = await fetch(url, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',                                                              
+      body: JSON.stringify({ "title":title, "due":due })                                        
+    })
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+ 
+  for(let i = 0; i< 10000; i++){
+    console.log("ja")
+  }
+  
+  return response.json();
 }
 
-export async function updateTodo(id, { title, completed, due } = {}) {
-  
+export async function updateTodo(id, json = {}) {
+  console.log('patch');
+  const fields = json;
+  const url = new URL(id, apiUrl);
+  //console.log('patch id', id, ' title ', title, ' completed ', completed);
+
+  var myHeaders = new Headers();
+  myHeaders.append('Content-Type', 'application/json');
+
+  const response = await fetch(url, {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'PATCH',                                                              
+    body: JSON.stringify( fields )                                        
+  })
+
+  if (!response.ok) {
+    return null;
+  }
+
+  return response.json();
 }
 
 export async function getTodos(hideCompleted = undefined) {
 
-    const url = new URL(``, apiUrl);
+    const url = new URL(apiUrl);
     console.log('fetch', url.href);
-    const response = await fetch('http://127.0.0.1:3000/');
+    const response = await fetch(url.href);
     if (!response.ok) {
       return null;
     }
@@ -30,5 +84,12 @@ export async function getTodos(hideCompleted = undefined) {
   
 
 export async function getTodo(id) {
-  
+  const url = new URL('/'+id,apiUrl);
+  console.log('fetch', url.href);
+  const response = await fetch(url.href);
+  if (!response.ok) {
+    return null;
+  }
+
+  return response.json();
 }

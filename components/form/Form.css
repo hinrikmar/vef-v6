@@ -1,28 +1,6 @@
-.form_container {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  margin-bottom: 20px;
-}
-
-.input_container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  line-height: 25px;
-  margin: 5px;
- 
-}
-
-.input_title {
-  text-align: center;
-  width: 30%;
-}
-
-.input_text {
-  width: 70%;
-  
+    
+.form {
+  margin-bottom: 30px;
 }
 
 .form__header {

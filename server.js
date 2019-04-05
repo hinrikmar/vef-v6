@@ -10,8 +10,8 @@ app
   .then(() => {
     const server = express();
 
-    server.get('/:id', (req, res) => {
-      app.render(req, res, '/', { id: req.params.id });
+    server.get('/todo/:id', (req, res) => {
+      app.render(req, res, '/todo', { id: req.params.id });
     });
 
     server.get('*', (req, res) => {
