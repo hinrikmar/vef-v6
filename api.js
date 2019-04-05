@@ -6,7 +6,7 @@ const { publicRuntimeConfig } = getConfig();
 const { apiUrl } = publicRuntimeConfig;
 
 export async function deleteTodo(id) {
-  const url = new URL('/'+id,apiUrl);
+  const url = new URL(id,apiUrl);
   console.log('fetch', url.href);
   const response = await fetch(url.href, {method: 'DELETE'})
   if (!response.ok) {
@@ -38,10 +38,6 @@ export async function addTodo(title, due) {
     throw new Error(response.statusText);
   }
  
-  for(let i = 0; i< 10000; i++){
-    console.log("ja")
-  }
-  
   return response.json();
 }
 
@@ -84,7 +80,7 @@ export async function getTodos(hideCompleted = undefined) {
   
 
 export async function getTodo(id) {
-  const url = new URL('/'+id,apiUrl);
+  const url = new URL(id,apiUrl);
   console.log('fetch', url.href);
   const response = await fetch(url.href);
   if (!response.ok) {

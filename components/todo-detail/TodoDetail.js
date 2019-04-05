@@ -48,7 +48,7 @@ export default function todoDetail(props) {
     data.completed = completed;
     
     setShowNew(data);
-
+    
     onUpdateCompleted({"title":title,"completed":completed,"due":due},true)
     onFetchNewData(true)
   }

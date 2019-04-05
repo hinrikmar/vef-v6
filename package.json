@@ -9,6 +9,9 @@
     "now-build": "next build",
     "start": "NODE_ENV=production node server.js"
   },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -22,5 +25,10 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.6",
     "react-native-elements": "^1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-react": "^7.12.4"
   }
 }
